@@ -1,0 +1,25 @@
+{
+  "name": "clutch-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banidrum/clutch-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/banidrum/clutch-backend/issues"
+  },
+  "homepage": "https://github.com/banidrum/clutch-backend#readme",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "express": "^4.17.2",
+    "jest": "^27.4.7"
+  }
+}

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/banidrum/clutch-backend#readme",
   "dependencies": {
     "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.0",
     "express": "^4.17.2",
     "jest": "^27.4.7"
   }

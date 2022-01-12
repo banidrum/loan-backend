@@ -1,3 +1,7 @@
-# How to run the project
+## The project
 
-# How to run tests
+The solution was made in TypeScript, using Express as the framework.
+
+## How to run the project
+
+## How to run tests

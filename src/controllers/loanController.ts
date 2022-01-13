@@ -1,45 +1,30 @@
 import { Request, Response } from "express";
-import Loan from "../interfaces/Loan";
 import { LoanService } from "../services/loanService";
-
-const loanService = new LoanService();
+import { validateInput, validateMinimumAndMaximumLoanAmount } from "../helpers";
+import Loan from "../interfaces/Loan";
 
 export class LoanController {
+  private loanService: LoanService;
+
+  constructor() {
+    this.loanService = new LoanService();
+  }
   public CalculateAPR(req: Request, res: Response) {
     try {
       const loan = req.body as Loan;
 
-      this.checkInput(req);
+      let validateMessage =
+        validateInput(req) || validateMinimumAndMaximumLoanAmount(loan);
 
-      const rate = loanService.calculateApr(loan);
-      res.status(200).json(rate);
+      if (validateMessage) {
+        return res.status(400).json(validateMessage);
+      }
+
+      const rate = this.loanService.calculateApr(loan);
+      return res.status(200).json(rate);
     } catch (err) {
       console.error(err);
-      res.status(500).json("Something went wrong");
-    }
-  }
-
-  private checkInput(req: Request) {
-    const loanBody = req.body;
-
-    if (isNaN(loanBody.loanAmount)) {
-      throw new Error("Amount must be a number");
-    }
-
-    if (typeof loanBody.loanTerm !== "string") {
-      throw new Error("Loan term must be a string");
-    }
-
-    if (isNaN(loanBody.personCreditScore)) {
-      throw new Error("Credit score must be a number");
-    }
-
-    if (isNaN(loanBody.vehicleYear)) {
-      throw new Error("Vehicle year be a number");
-    }
-
-    if (isNaN(loanBody.vehicleMileage)) {
-      throw new Error("Vehicle mileage be a number");
+      return res.status(500).json("Something went wrong");
     }
   }
 }

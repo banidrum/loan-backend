@@ -57,44 +57,4 @@ describe("This suite tests the Loan Service", () => {
 
     expect(response).toBe(SUCCESSFUL_VEHICLE_MILEAGE_RATE_RESPONSE);
   });
-
-  it("Should validate the minimum loan for 36 months", async () => {
-    const response = loanService.calculateApr(MINIMUM_AMOUNT_LESS_5000);
-
-    expect(response).toBe(LOAN_36_MONTHS_MINIMUM_AMOUNT_RESPONSE);
-  });
-
-  it("Should validate the minimum loan for 48 months", async () => {
-    const response = loanService.calculateApr(MINIMUM_AMOUNT_LESS_10000);
-
-    expect(response).toBe(LOAN_48_MONTHS_MINIMUM_AMOUNT_RESPONSE);
-  });
-
-  it("Should validate the minimum loan for 60 months", async () => {
-    const response = loanService.calculateApr(MINIMUM_AMOUNT_LESS_15000);
-
-    expect(response).toBe(LOAN_60_MONTHS_MINIMUM_AMOUNT_RESPONSE);
-  });
-
-  it("Should validate the maximum loan for 700 or above credit score", async () => {
-    const response = loanService.calculateApr(MAXIMUM_AMOUNT_700_CREDIT_SCORE);
-
-    expect(response).toBe(CREDIT_SCORE_700_MAXIMUM_AMOUNT_RESPONSE);
-  });
-
-  it("Should validate the maximum loan for credit score between 600 and 699", async () => {
-    const response = loanService.calculateApr(
-      MAXIMUM_AMOUNT_600_699_CREDIT_SCORE
-    );
-
-    expect(response).toBe(CREDIT_SCORE_600_699_MAXIMUM_AMOUNT_RESPONSE);
-  });
-
-  it("Should validate the maximum loan for less than 600 credit score", async () => {
-    const response = loanService.calculateApr(
-      MAXIMUM_AMOUNT_LESS_600_CREDIT_SCORE
-    );
-
-    expect(response).toBe(CREDIT_SCORE_LESS_600_MAXIMUM_AMOUNT_RESPONSE);
-  });
 });

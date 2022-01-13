@@ -1,6 +1,6 @@
 ## The project
 
-The solution was made in TypeScript, using Express as the framework.
+The solution was made in TypeScript, using Express as the framework. Jest was used for unit testing and Supertest for integration testing.
 
 The Node.js version is 14.
 
@@ -10,8 +10,8 @@ First, install all the dependencies with `npm install`
 
 You can run `npm run build` to build the project and then you can run `npm run start` to start it.
 
-You can also run the project with `ts-node` if you have it installed, simlpy run `ts-node src/server.ts`
+You can also run the project with `ts-node` if you have it installed, simply run `ts-node src/server.ts`
 
 ## How to run tests
 
-To run the tests, run `npm run test`
+To run the unit tests, run `npm run test`

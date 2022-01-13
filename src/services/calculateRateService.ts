@@ -1,63 +1,55 @@
+import {
+  ratesBetween600And699CreditScore,
+  ratesFor700CreditScore,
+  ratesForLess600CreditScore,
+} from "../utils/calculateBaseRate";
+
 export class CalculateRateService {
   public calculateBaseRateFor700CreditScore(
     creditScore: number,
-    loanTerm: string
+    loanTerm: string,
+    vehicleYear: number,
+    vehicleMileage: number
   ) {
-    if (loanTerm === "36 months") {
-      const rate = 4.75;
-      return rate;
-    }
-    if (loanTerm === "48 months") {
-      const rate = 5;
-      return rate;
-    }
-    if (loanTerm === "60 months") {
-      const rate = 5.5;
-      return rate;
-    }
+    // const calculatedRate = ratesFor700CreditScore(loanTerm);
+    // const returnedVehicleYearRate = this.validateVehicleYear(
+    //   vehicleYear,
+    //   calculatedRate
+    // );
+    // const returnedVehicleMileageRate = this.validateVehicleMileage(
+    //   vehicleMileage,
+    //   calculatedRate
+    // );
+    // if (returnedVehicleYearRate && returnedVehicleMileageRate) {
+    //   return (
+    //     calculatedRate + returnedVehicleYearRate + returnedVehicleMileageRate
+    //   );
+    // }
+    // if (returnedVehicleYearRate) {
+    //   return returnedVehicleYearRate;
+    // }
+    // if (returnedVehicleMileageRate) {
+    //   return returnedVehicleMileageRate;
+    // }
+    // return calculatedRate;
   }
 
   public calculateBaseRateBetween600And699CreditScore(
     creditScore: number,
-    loanTerm: string
+    loanTerm: string,
+    vehicleYear: number
   ) {
-    if (loanTerm === "36 months") {
-      const rate = 5.75;
-      return rate;
-    }
-    if (loanTerm === "48 months") {
-      const rate = 6;
-      return rate;
-    }
-    if (loanTerm === "60 months") {
-      const rate = 6.65;
-      return rate;
-    }
+    const calculatedRate = ratesBetween600And699CreditScore(loanTerm);
+
+    return calculatedRate;
   }
 
   public calculateBaseRateLessThan600CreditScore(
     creditScore: number,
-    loanTerm: string
+    loanTerm: string,
+    vehicleYear: number
   ) {
-    if (loanTerm === "36 months") {
-      const rate = 12.75;
-      return rate;
-    }
-    if (loanTerm === "48 months") {
-      const rate = 13.25;
-      return rate;
-    }
-    if (loanTerm === "60 months") {
-    }
-  }
-
-  private validateVehicle(vehicleMileage: number, vehicleYear: number) {
-    if (vehicleYear < 2015) {
-      //   rate += 1;
-    }
-
-    if (vehicleMileage > 100000) {
-      //   rate += 2;
-    }
+    const calculatedRate = ratesForLess600CreditScore(loanTerm);
+    return calculatedRate;
   }
 }

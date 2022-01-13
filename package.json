@@ -21,6 +21,30 @@
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.0",
     "express": "^4.17.2",
-    "jest": "^27.4.7"
+    "jest": "^27.4.7",
+    "ts-jest": "^27.1.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "roots": [
+      "tests"
+    ],
+    "testRegex": ".*\\.test\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "testEnvironment": "node",
+    "coverageReporters": [
+      "lcov"
+    ],
+    "modulePathIgnorePatterns": [
+      "tests/mocks"
+    ]
   }
 }

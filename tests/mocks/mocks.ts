@@ -113,3 +113,43 @@ export const MAXIMUM_AMOUNT_LESS_600_CREDIT_SCORE = {
 
 export const CREDIT_SCORE_LESS_600_MAXIMUM_AMOUNT_RESPONSE =
   "The maximum loan amount for a credit score below 600 is $ 50,000";
+
+export const WRONG_LOAN_AMOUNT_FORMAT = {
+  loanAmount: "Force failure",
+  loanTerm: "36 months",
+  personCreditScore: 700,
+  vehicleYear: 2015,
+  vehicleMileage: 10000,
+};
+
+export const WRONG_LOAN_TERM_FORMAT = {
+  loanAmount: 10000,
+  loanTerm: { key: 12 },
+  personCreditScore: 700,
+  vehicleYear: 2015,
+  vehicleMileage: 10000,
+};
+
+export const WRONG_CREDIT_SCORE_FORMAT = {
+  loanAmount: 10000,
+  loanTerm: "36 months",
+  personCreditScore: "Wrong credit score",
+  vehicleYear: 2015,
+  vehicleMileage: 10000,
+};
+
+export const WRONG_VEHICLE_YEAR_FORMAT = {
+  loanAmount: 10000,
+  loanTerm: "36 months",
+  personCreditScore: 700,
+  vehicleYear: "Wrong vehicle year",
+  vehicleMileage: 10000,
+};
+
+export const WRONG_VEHICLE_MILEAGE_FORMAT = {
+  loanAmount: 10000,
+  loanTerm: "36 months",
+  personCreditScore: 700,
+  vehicleYear: 2015,
+  vehicleMileage: "Wrong vehicle mileage",
+};

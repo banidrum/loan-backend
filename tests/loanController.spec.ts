@@ -18,6 +18,11 @@ import {
   MINIMUM_AMOUNT_LESS_15000,
   MINIMUM_AMOUNT_LESS_5000,
   SUCCESSFUL_BODY,
+  WRONG_CREDIT_SCORE_FORMAT,
+  WRONG_LOAN_AMOUNT_FORMAT,
+  WRONG_LOAN_TERM_FORMAT,
+  WRONG_VEHICLE_MILEAGE_FORMAT,
+  WRONG_VEHICLE_YEAR_FORMAT,
 } from "./mocks/mocks";
 import { LoanService } from "../src/services/loanService";
 
@@ -137,13 +142,7 @@ describe("This suite tests the Loan Controller", () => {
 
   it("Should validate the loan amount input", () => {
     Object.assign(request, {
-      body: {
-        loanAmount: "Force failure",
-        loanTerm: "36 months",
-        personCreditScore: 700,
-        vehicleYear: 2015,
-        vehicleMileage: 10000,
-      },
+      body: WRONG_LOAN_AMOUNT_FORMAT,
     });
 
     loanController.calculateAPR(request, res);
@@ -153,13 +152,7 @@ describe("This suite tests the Loan Controller", () => {
 
   it("Should validate the loan term input", () => {
     Object.assign(request, {
-      body: {
-        loanAmount: 10000,
-        loanTerm: { key: 12 },
-        personCreditScore: 700,
-        vehicleYear: 2015,
-        vehicleMileage: 10000,
-      },
+      body: WRONG_LOAN_TERM_FORMAT,
     });
 
     loanController.calculateAPR(request, res);
@@ -171,13 +164,7 @@ describe("This suite tests the Loan Controller", () => {
 
   it("Should validate the credit score input", () => {
     Object.assign(request, {
-      body: {
-        loanAmount: 10000,
-        loanTerm: "36 months",
-        personCreditScore: "Wrong credit score",
-        vehicleYear: 2015,
-        vehicleMileage: 10000,
-      },
+      body: WRONG_CREDIT_SCORE_FORMAT,
     });
 
     loanController.calculateAPR(request, res);
@@ -189,13 +176,7 @@ describe("This suite tests the Loan Controller", () => {
 
   it("Should validate the vehicle year input", () => {
     Object.assign(request, {
-      body: {
-        loanAmount: 10000,
-        loanTerm: "36 months",
-        personCreditScore: 700,
-        vehicleYear: "Wrong vehicle year",
-        vehicleMileage: 10000,
-      },
+      body: WRONG_VEHICLE_YEAR_FORMAT,
     });
 
     loanController.calculateAPR(request, res);
@@ -207,13 +188,7 @@ describe("This suite tests the Loan Controller", () => {
 
   it("Should validate the vehicle mileage input", () => {
     Object.assign(request, {
-      body: {
-        loanAmount: 10000,
-        loanTerm: "36 months",
-        personCreditScore: 700,
-        vehicleYear: 2015,
-        vehicleMileage: "Wrong vehicle mileage",
-      },
+      body: WRONG_VEHICLE_MILEAGE_FORMAT,
     });
 
     loanController.calculateAPR(request, res);

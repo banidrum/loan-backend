@@ -23,7 +23,6 @@ export class LoanController {
       const rate = this.loanService.calculateApr(loan);
       return res.status(200).json(rate);
     } catch (err) {
-      console.error(err);
       return res.status(500).json("Something went wrong");
     }
   }

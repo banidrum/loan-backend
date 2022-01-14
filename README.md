@@ -14,4 +14,8 @@ You can also run the project with `ts-node` if you have it installed, simply run
 
 ## How to run tests
 
-To run the unit tests, run `npm run test`
+To run the all the tests, run `npm run test`
+
+To run only the unit tests, run `npm run test:unit`
+
+To run only the integration tests, run `npm run test:integration`

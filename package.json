@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server",
-    "test": "jest",
-    "integration-test": "jest tests/integration --coverage --collectCoverageFrom=**/src/controllers/loanController.ts"
+    "test": "jest --passWithNoTests --runInBand",
+    "test:integration": "npm test -- -c jest-integration.config.js",
+    "test:unit": "npm test -- -c jest-unit.config.js --coverage",
+    "test:ci": "npm test -- --coverage"
   },
   "keywords": [],
   "author": "",
@@ -21,29 +23,5 @@
     "jest-express": "^1.12.0",
     "supertest": "^6.2.1",
     "ts-jest": "^27.1.2"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "roots": [
-      "tests"
-    ],
-    "testRegex": ".*\\.test\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverage": true,
-    "coverageDirectory": "coverage",
-    "testEnvironment": "node",
-    "coverageReporters": [
-      "lcov",
-      "text"
-    ],
-    "modulePathIgnorePatterns": [
-      "<rootDir>/mocks"
-    ]
   }
 }

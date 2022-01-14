@@ -35,7 +35,7 @@ describe("This suite tests the Loan Controller", () => {
 
     const mockedResponse = jest.spyOn(res, "json");
 
-    loanController.CalculateAPR(request, res);
+    loanController.calculateAPR(request, res);
 
     expect(mockedResponse).toHaveBeenCalledWith(
       LOAN_36_MONTHS_MINIMUM_AMOUNT_RESPONSE
@@ -47,7 +47,7 @@ describe("This suite tests the Loan Controller", () => {
 
     const mockedResponse = jest.spyOn(res, "json");
 
-    loanController.CalculateAPR(request, res);
+    loanController.calculateAPR(request, res);
 
     expect(mockedResponse).toHaveBeenCalledWith(
       LOAN_48_MONTHS_MINIMUM_AMOUNT_RESPONSE
@@ -59,7 +59,7 @@ describe("This suite tests the Loan Controller", () => {
 
     const mockedResponse = jest.spyOn(res, "json");
 
-    loanController.CalculateAPR(request, res);
+    loanController.calculateAPR(request, res);
 
     expect(mockedResponse).toHaveBeenCalledWith(
       LOAN_60_MONTHS_MINIMUM_AMOUNT_RESPONSE
@@ -71,7 +71,7 @@ describe("This suite tests the Loan Controller", () => {
 
     const mockedResponse = jest.spyOn(res, "json");
 
-    loanController.CalculateAPR(request, res);
+    loanController.calculateAPR(request, res);
 
     expect(mockedResponse).toHaveBeenCalledWith(
       CREDIT_SCORE_700_MAXIMUM_AMOUNT_RESPONSE
@@ -83,7 +83,7 @@ describe("This suite tests the Loan Controller", () => {
 
     const mockedResponse = jest.spyOn(res, "json");
 
-    loanController.CalculateAPR(request, res);
+    loanController.calculateAPR(request, res);
 
     expect(mockedResponse).toHaveBeenCalledWith(
       CREDIT_SCORE_600_699_MAXIMUM_AMOUNT_RESPONSE
@@ -95,7 +95,7 @@ describe("This suite tests the Loan Controller", () => {
 
     const mockedResponse = jest.spyOn(res, "json");
 
-    loanController.CalculateAPR(request, res);
+    loanController.calculateAPR(request, res);
 
     expect(mockedResponse).toHaveBeenCalledWith(
       CREDIT_SCORE_LESS_600_MAXIMUM_AMOUNT_RESPONSE
@@ -103,15 +103,19 @@ describe("This suite tests the Loan Controller", () => {
   });
 
   it("Should return an error when something is invalid", async () => {
-    const calculateAprSpy = jest.spyOn(res, "json");
-    try {
-      loanController.CalculateAPR(request, res);
+    const calculateAPRSpy = jest.spyOn(res, "json");
+    const calculateAPRErrorSpy = jest.spyOn(loanController, "calculateAPR");
 
-      calculateAprSpy.mockImplementation(() => {
+    try {
+      calculateAPRSpy.mockImplementationOnce(() => {});
+
+      calculateAPRErrorSpy.mockImplementation(() => {
         throw new Error();
       });
+      loanController.calculateAPR(request, res);
     } catch (err) {
-      expect(calculateAprSpy).toHaveBeenCalledWith("Somewthing went wrong");
+      console.log("Entrou");
+      expect(calculateAPRErrorSpy).toHaveBeenCalledWith("Something went wrong");
     }
   });
 });

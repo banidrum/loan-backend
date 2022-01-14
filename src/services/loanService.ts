@@ -44,12 +44,12 @@ export class LoanService {
   }
 
   private getBaseRateForVehicleYear(vehicleYear: number, rate: number) {
-    if (vehicleYear < 2015) return rate + 1;
+    if (vehicleYear < 2015) return rate + 1.0;
     return rate;
   }
 
   private getBaseRateForVehicleMileage(vehicleMileage: number, rate: number) {
-    if (vehicleMileage >= 100000) return rate + 2;
+    if (vehicleMileage >= 100000) return rate + 2.0;
     return rate;
   }
 }

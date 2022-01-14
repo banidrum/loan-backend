@@ -9,7 +9,7 @@ export class LoanController {
   constructor() {
     this.loanService = new LoanService();
   }
-  public CalculateAPR(req: Request, res: Response) {
+  public calculateAPR(req: Request, res: Response) {
     try {
       const loan = req.body as Loan;
 

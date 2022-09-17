@@ -1,5 +1,7 @@
 ## The project
 
+A simple project to simulate loan rates depending on the person credit score.
+
 The solution was made in TypeScript, using Express as the framework. Jest was used for unit testing and Supertest for integration testing.
 
 The Node.js version is 14.
